@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
@@ -21,12 +22,23 @@ public class PharmacieGard  implements Serializable{
 	private Date dateDubut;
 	@Temporal(TemporalType.DATE)
 	private Date dateFin;
-	@ManyToAny
+	@ManyToMany
 	private Garde gard;
+	@ManyToMany
+	private Pharmacie pharmacie;
 	
 	public PharmacieGard() {
 		super();
 	}
+	
+	public Pharmacie getPharmacie() {
+		return pharmacie;
+	}
+
+	public void setPharmacie(Pharmacie pharmacie) {
+		this.pharmacie = pharmacie;
+	}
+
 	public Long getId() {
 		return id;
 	}
